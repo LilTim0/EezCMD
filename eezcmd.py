@@ -1,4 +1,3 @@
-from ast import arg
 from commands import *
 import os
   
@@ -23,8 +22,14 @@ while True:
   cmd = input( 'EEZ > ' + path + ' > ')
   print()
 
-  if cmd == 'help':
-    help()
+  if cmd.startswith('help') or cmd.startswith('?'):
+    if cmd.startswith('help'):
+      arg = cmd.replace('help', '')
+    else:
+      arg = cmd.replace('?', '')      
+
+    arg = arg.replace(' ', '')
+    help(arg)
 
   elif cmd == 'time' or cmd == 'date' or cmd == 'datetime':
     time()
@@ -103,6 +108,34 @@ while True:
     arg = cmd.replace(st, '')
     arg = arg.replace('-', '')
     si(arg)
+
+  elif cmd.startswith('fo ') or cmd.startswith('file-operation '):
+    if cmd.startswith('fo'):
+      st = 'fo '
+    else:
+      st = 'file-operation '
+    arg = cmd.replace(st, '')
+    arg = arg.split()
+    if len(arg) > 2:
+      print('This command only takes 2 arguments, please check your syntax')
+    else:
+      arg[1] = arg[1].replace('-', '')
+      text = fo(arg[0], arg[1])
+      if text != '':
+        print(text)
+
+  elif cmd.startswith('foa') or cmd.startswith('file-operation-advanced'):
+    if cmd.startswith('foa'):
+      st = 'foa '
+    else:
+      st = 'file-operation-advanced      '
+    arg = cmd.replace(st, '')
+    arg = arg.split()
+    if len(arg) > 3:
+      print('This command only takes 3 arguments, please check your syntax')
+    else:
+      arg[2] = arg[2].replace('-', '')
+      foa(arg[0], arg[1], arg[2])
 
   elif cmd == 'exit' or cmd == '-':
     os.system('cls')
