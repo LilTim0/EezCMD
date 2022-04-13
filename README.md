@@ -30,6 +30,8 @@ EezCMD is a better cmd than the windows cmd and allows you to use shorter comman
 | system-info -[arg]                           | Print the system's infos                                     |
 | fo [file] -[mode]                            | Can make several diffecrent operations on the specified file |
 | file-operation [file] -[mode]                | Can make several diffecrent operations on the specified file |
+| foa [file] [file2/text] [mode]               | Makes several different operations on the specified files   |
+| file-operation-advanced [file] [file2/text] [mode] | Makes several different operations on the specified files   |
 | -                                            | Exits the console                                            |
 | exit                                         | Exits the console                                            |
   
@@ -42,4 +44,4 @@ Use the -? shortcut instead of an argument to see the all the possibilities
   
   ### Example session
   
-![image](https://user-images.githubusercontent.com/99663083/163148418-c9f34040-5e75-4926-80c4-e44d21ff9293.png)
+![image](https://user-images.githubusercontent.com/99663083/163231262-b3fafa8f-df60-4470-a1d7-a034ca281f8b.png)
