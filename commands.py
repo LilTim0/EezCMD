@@ -1,5 +1,7 @@
 from datetime import *
 import os
+import platform
+from traceback import print_tb
 
 def help():
   print('Displays the list of all the commands avaible')
@@ -33,7 +35,7 @@ def help():
 
 def time():
   today = datetime.now()
-  time = today.strftime("%d/%m/%Y %H:%M:%S")
+  time = today.strftime("%Y/%m/%d %H:%M:%S")
   print(time)
   
 def clear():
@@ -89,6 +91,67 @@ def color(colors):
 
 def ct(r, g, b, text):
   print("\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text))
+
+def si(arg):
+  if arg == '*':
+    syst = platform.uname()
+    print('Operating System          : ' + syst[0])
+    print('Name                      : ' + syst[1])
+    print('Version                   : ' + syst[2])
+    print('Version (detail)          : ' + syst[3])
+    print('Architecture              : ' + syst[4])
+    print('Processor                 : ' + syst[5])
+
+  elif arg == 'arc':
+    print('Architecture : ' + platform.machin())
+  
+  elif arg == 'version':
+    print('Version : ' + platform.version())
+
+  elif arg == 'osd':
+    print('Operating System (detail) : ' + platform.platform())
+
+  elif arg == 'os':
+    print('Operating System : ' + platform.system())
+
+  elif arg == 'processor':
+    print('Processor : ' + platform.processor())
+
+  elif arg == '?':
+    print('Arguments :')
+    print('-*         -> Displays all the system informations')
+    print('-arc       -> Displays the architecture informations')
+    print('-version   -> Displays the operating system version')
+    print('-osd       -> Displays the operating system detail informations')
+    print('-os        -> Displays the operating system informations')
+    print('-processor -> Displays the processor informations')
+
+  else:
+    print('The argument ' + arg +' doesn\'t exist, please check your syntax')
+
+def fo(file, mode):
+  text = ''
+  if mode == 'r':
+    if not os.path.exists(file):
+      print('You can\'t read a file who does not exist')
+    else:
+      with open(file, mode) as rf:
+        lines = rf.readlines()
+        for i in lines:
+          text += i;
+  
+  elif mode == 'a':
+    if not os.path.exists(file):
+      print('You can\'t append something to a file who does not exist')
+    else:
+      with open(file, 'r') as rf:
+        lines = rf.readlines()
+        for i in lines:
+          text += i;
+      with open(file, mode) as af:
+        temp = text
+        text = input(temp)
+        
 
 def unknown(cmd):
   print('The command ' + cmd + ' doesn\'t exist, please check your syntax')
