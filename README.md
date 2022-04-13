@@ -22,8 +22,9 @@ EezCMD is a better cmd than the windows cmd and allows you to use shorter comman
 | remove-directory <dir>                       | Removes the specified directory (absolute or relative path)  |
 | le {dir}                                     | List the entries of the specified directory                  |
 | list-entries {dir}                           | List the entries of the specified directory                  |
-| ct <red> <green> <blue> <text>               | List the entries of the specified directory                  |
-| colored-text <red> <green> <blue> <text>     | List the entries of the specified directory                  |
+| color {bgcolor} {fgcolor}                    | Change the background and foredground color                  |
+| ct <red> <green> <blue> <text>               | Display the secified text with the specified rgb color       |
+| colored-text <red> <green> <blue> <text>     | Display the secified text with the specified rgb color       |
 | si -<arg>                                    | Print the system's infos                                     |
 | sys-info -<arg>                              | Print the system's infos                                     |
 | system-info -<arg>                           | Print the system's infos                                     |
