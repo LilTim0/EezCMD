@@ -5,15 +5,23 @@ import os
 loop = True;
 
 title = 'EezCMD BETA'
+version = ' v.22.04.13'
+today = datetime.now()
+utime = today.strftime("%H:%M:%S - %Y/%m/%d")
 
 os.system('cls')
 os.system('title ' + title)
+os.system('color 07')
 
-print(title + ' - (c) Lil_Tim\nAll rights reserved\n')
+print(title + version + ' - (c) Lil_Tim')
+print('All rights reserved')
+print('Session started at : ' + utime)
 
 while True:
   path = os.getcwd()
+  print()
   cmd = input( 'EEZ > ' + path + ' > ')
+  print()
 
   if cmd == 'help':
     help()
@@ -63,7 +71,7 @@ while True:
     lea(dir)
 
   elif cmd == 'color':
-    os.system('color 0f')
+    os.system('color 07')
 
   elif cmd.startswith('color'):
     ucolor = cmd.replace('color ','')
@@ -83,6 +91,18 @@ while True:
       for i in range(4, len(args)):
         args[3] += ' ' + args[i]
       ct(args[0], args[1], args[2], args[3])
+
+
+  elif cmd.startswith('si') or cmd.startswith('sys-info') or cmd.startswith('system-informations'):
+    if cmd.startswith('si'):
+      st = 'si '
+    elif cmd.startswith('sys-info'):
+      st = 'sys-info '
+    else:
+      st = 'system-informations '
+    arg = cmd.replace(st, '')
+    arg = arg.replace('-', '')
+    si(arg)
 
   elif cmd == 'exit' or cmd == '-':
     os.system('cls')
